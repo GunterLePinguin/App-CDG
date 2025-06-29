@@ -1,0 +1,69 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    container_name: cdg_postgres
+    environment:
+      POSTGRES_DB: airport
+      POSTGRES_USER: cdg_user
+      POSTGRES_PASSWORD: cdg_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cdg_user -d airport"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build:
+      context: .
+      dockerfile: app/Dockerfile
+    container_name: cdg_api
+    environment:
+      DATABASE_URL: postgresql://cdg_user:cdg_password@db:5432/airport
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-dummy_key}
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./app:/app
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+  generator:
+    build:
+      context: .
+      dockerfile: data_generator/Dockerfile
+    container_name: cdg_generator
+    environment:
+      DATABASE_URL: postgresql://cdg_user:cdg_password@db:5432/airport
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./data_generator:/generator
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    container_name: cdg_dashboard
+    environment:
+      API_URL: http://app:8000
+    ports:
+      - "8501:8501"
+    depends_on:
+      - app
+    volumes:
+      - ./frontend:/frontend
+    command: streamlit run dashboard.py --server.address 0.0.0.0
+
+volumes:
+  postgres_data:

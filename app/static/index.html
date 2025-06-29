@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✈️ CDG Airport Management System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 90%;
+            text-align: center;
+        }
+        
+        .header {
+            margin-bottom: 3rem;
+        }
+        
+        .title {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .card-description {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-primary {
+            background: rgba(255, 255, 255, 0.9);
+            color: #667eea;
+        }
+        
+        .btn-primary:hover {
+            background: white;
+        }
+        
+        .status {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(76, 175, 80, 0.9);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .footer {
+            margin-top: 3rem;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                min-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="status" id="status">
+        🟢 Système Opérationnel
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <h1 class="title">✈️ Aéroport Charles de Gaulle</h1>
+            <p class="subtitle">Système de Gestion Intégré • Temps Réel</p>
+        </div>
+        
+        <div class="cards">
+            <div class="card">
+                <div class="card-icon">🛫</div>
+                <h3 class="card-title">Gestion des Vols</h3>
+                <p class="card-description">
+                    Suivi en temps réel des vols, statuts, horaires et portes d'embarquement.
+                    Gestion complète des arrivées et départs.
+                </p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">👥</div>
+                <h3 class="card-title">Gestion Passagers</h3>
+                <p class="card-description">
+                    Base de données complète des passagers avec profils, préférences
+                    et historique de voyages.
+                </p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">🤖</div>
+                <h3 class="card-title">IA & Recommandations</h3>
+                <p class="card-description">
+                    Algorithmes intelligents pour recommandations personnalisées
+                    et génération automatique d'emails.
+                </p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">📊</div>
+                <h3 class="card-title">Tableau de Bord</h3>
+                <p class="card-description">
+                    Interface moderne avec visualisations temps réel,
+                    métriques et alertes opérationnelles.
+                </p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">🏪</div>
+                <h3 class="card-title">Services Aéroport</h3>
+                <p class="card-description">
+                    Gestion des services, restaurants, boutiques et
+                    monitoring de la capacité d'accueil.
+                </p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">📡</div>
+                <h3 class="card-title">Temps Réel</h3>
+                <p class="card-description">
+                    Données live, événements instantanés et
+                    synchronisation automatique des systèmes.
+                </p>
+            </div>
+        </div>
+        
+        <div class="buttons">
+            <a href="http://localhost:8501" class="btn btn-primary" target="_blank">
+                📊 Ouvrir le Dashboard
+            </a>
+            <a href="http://localhost:8000/docs" class="btn" target="_blank">
+                📚 Documentation API
+            </a>
+            <a href="http://localhost:8000/health" class="btn" target="_blank">
+                ❤️ Statut Système
+            </a>
+        </div>
+        
+        <div class="footer">
+            <p>© 2025 Aéroport Charles de Gaulle • Système de Gestion Avancé</p>
+            <p>Développé avec FastAPI, Streamlit, PostgreSQL et Docker</p>
+        </div>
+    </div>
+    
+    <script>
+        // Vérifier le statut de l'API
+        async function checkStatus() {
+            try {
+                const response = await fetch('/health');
+                const data = await response.json();
+                const statusEl = document.getElementById('status');
+                
+                if (data.status === 'healthy') {
+                    statusEl.textContent = '🟢 Système Opérationnel';
+                    statusEl.style.background = 'rgba(76, 175, 80, 0.9)';
+                } else {
+                    statusEl.textContent = '🟡 Maintenance';
+                    statusEl.style.background = 'rgba(255, 152, 0, 0.9)';
+                }
+            } catch (error) {
+                const statusEl = document.getElementById('status');
+                statusEl.textContent = '🔴 Hors Ligne';
+                statusEl.style.background = 'rgba(244, 67, 54, 0.9)';
+            }
+        }
+        
+        // Vérifier le statut toutes les 30 secondes
+        checkStatus();
+        setInterval(checkStatus, 30000);
+    </script>
+</body>
+</html>
