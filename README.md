@@ -286,7 +286,7 @@ Tableau de Bord Temps Réel Cohérent
 
 ---
 
-## ⚠️ Limites du proket en l'état
+## ⚠️ Limites du projet en l'état
 ### Limites Actuelles
 
 #### Scalabilité
