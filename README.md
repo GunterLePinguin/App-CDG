@@ -286,8 +286,7 @@ Tableau de Bord Temps Réel Cohérent
 
 ---
 
-## ⚠️ Limites et Améliorations Futures
-
+## ⚠️ Limites du proket en l'état
 ### Limites Actuelles
 
 #### Scalabilité
