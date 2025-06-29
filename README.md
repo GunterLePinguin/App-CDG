@@ -120,13 +120,7 @@ Le projet adopte une **architecture microservices** moderne avec :
 - **Alertes** : Notifications importantes
 - **Statistiques** : Fréquence par type d'événement
 
-### 5. Système de Recommandations 🤖
-- **Algorithme ML** : Recommandations personnalisées
-- **Clustering** : Groupement de passagers similaires
-- **Score hybride** : Combine préférences et popularité
-- **Cache intelligent** : Optimisation des performances
 
----
 
 ## 🚀 Installation et Déploiement
 
@@ -142,7 +136,7 @@ Le projet adopte une **architecture microservices** moderne avec :
 
 1. **Clonage du projet**
 ```bash
-git clone [URL_DU_PROJET]
+git clone [https://github.com/GunterLePinguin/App-CDG.git]
 cd CDG_TP
 ```
 
